@@ -4,15 +4,16 @@ public class EmployeeWage {
      public static final int IS_FULL_TIME = 1;
      public static final int IS_PART_TIME = 2;
      public static final int EMP_RATE_PER_HR = 20;
+     public static final int NUM_OF_WORKING_DAYS = 20;
 
     public static void main(String[] args) {
 
-        int empHrs = 0;
-        int empWage = 0;
+        int empHrs = 0, empWage = 0, totalEmpWage = 0;
 
-        double empCheck = (int) Math.floor(Math.random() * 10 ) % 3;
+        for (int day = 0; day < NUM_OF_WORKING_DAYS; day++ ) {
+            double empCheck = (int) Math.floor(Math.random() * 10) % 3;
             switch ((int) empCheck) {
-                case  IS_PART_TIME :
+                case IS_PART_TIME:
                     empHrs = 4;
                     System.out.println("Employee Present Half time :");
                     break;
@@ -23,10 +24,13 @@ public class EmployeeWage {
                 default:
                     empHrs = 0;
                     System.out.println("Employee Absent :");
-
             }
-            empWage = empHrs * EMP_RATE_PER_HR;
-            System.out.println("Emp Wage: " + empWage);
 
+            empWage = empHrs * EMP_RATE_PER_HR;
+            totalEmpWage = empWage + totalEmpWage;
+            System.out.println("Emp Wage: " + empWage);
+        }
+
+         System.out.println("Total Emp wage: " + totalEmpWage);
     }
 }
